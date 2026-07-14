@@ -1,0 +1,66 @@
+package time
+
+# Just for learning do use this on project only copy Content
+
+
+	now := time.Now()
+
+	fmt.Println("print time",now)
+
+	fmt.Println(now.Format("2006-01-02"))
+	fmt.Println(now.Format("15:04:05"))
+	fmt.Println(now.Format("02 Jan 2006"))
+
+
+	fmt.Println("Tomorrow :", now.Add(24*time.Hour).Format("15:04:05"))
+
+
+	start := time.Now()
+
+	time.Sleep(5 * time.Second)
+
+	end := time.Now()
+
+	fmt.Println(end.Sub(start))
+
+
+
+	start1 := time.Now()
+
+	time.Sleep(3 * time.Second)
+
+	fmt.Println(time.Since(start1)) // Dispaly time scine start
+
+
+	date, _ := time.Parse("2006-01-02", "2026-07-14")
+
+	fmt.Println(date)  // convert string into time op- 2026-07-14 00:00:00 +0000 UTC
+
+
+
+		t1 := time.Now()
+	t2 := t1.Add(1 * time.Hour)
+
+	fmt.Println(t1.Before(t2))  // o/p True
+	fmt.Println(t1.After(t2)) // o/p False
+
+	fmt.Println(t1.Equal(t2)) // o/p False
+
+
+
+
+
+	loc, _ := time.LoadLocation("Asia/Kolkata")
+
+	fmt.Println(time.Now().In(loc)) // Print location time
+
+
+
+
+	timer := time.NewTimer(3 * time.Second)
+
+	fmt.Println("Waiting...")
+
+	<-timer.C
+
+	fmt.Println("Timer Finished") // waiting... waits for  sec channel send output  then timer finshed
