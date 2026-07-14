@@ -64,3 +64,37 @@ package time
 	<-timer.C
 
 	fmt.Println("Timer Finished") // waiting... waits for  sec channel send output  then timer finshed
+
+
+#A Unix timestamp is simply the number of seconds that have passed since January 1, 1970, 00:00:00 UTC.
+
+This starting point is called the Unix Epoc
+
+	fmt.Println(time.Now().Unix())
+
+
+#Instead of storing :  2026-07-14 10:30:15
+
+##they store :1784025600
+
+#Numbers are: Faster to compare,  Easier to store, Time-zone independent
+
+
+	ticker := time.NewTicker(2 * time.Second)
+
+	for i := 1; i <= 3; i++ {
+		<-ticker.C   // Just passed time for channel communciton u can use it
+		fmt.Println("Tick", i)
+	}
+
+	ticker.Stop()
+
+
+#output
+
+(waits 2 seconds)
+Tick 1
+(waits 2 seconds)
+Tick 2
+(waits 2 seconds)
+Tick 3
